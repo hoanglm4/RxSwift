@@ -6,7 +6,8 @@
 //  Copyright © 2016 Krunoslav Zaher. All rights reserved.
 //
 
-#if os(iOS)
+#if os(iOS) && !targetEnvironment(UIKitForMac)
+
 import UIKit
 
 #if !RX_NO_MODULE
