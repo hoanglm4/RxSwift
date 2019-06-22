@@ -42,7 +42,11 @@ done
 function validate() {
     local PODSPEC=$1
 
-    pod lib lint $PODSPEC --verbose --no-clean --allow-warnings
+    validate=(pod lib lint $PODSPEC --verbose --no-clean ${arg} "${SWIFT_VERSION}")
+    if [ $TARGET = "RxCocoa" ]; then
+      validate+=(--allow-warnings)
+    fi
+    echo "${validate[@]}"
 }
 
 for TARGET in ${TARGETS[@]}
